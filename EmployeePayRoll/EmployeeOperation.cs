@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EmployeePayRoll
 {
@@ -161,6 +162,24 @@ namespace EmployeePayRoll
                 Console.WriteLine("Employee added:" + employeeData.Name);
             });
             Console.WriteLine(this.empList.ToString());
+        }
+        /// <summary>
+        /// Add Multiple Employee With Thread
+        /// </summary>
+        /// <param name="empList"></param>
+        public void AddMultipleEmployeeThread(List<Employee> empList)
+        {
+            empList.ForEach(employeeData =>
+            {
+                Task thread = new Task(() =>
+                {
+                    Console.WriteLine("Employee being added:" + employeeData.Name);
+                    this.AddMultipleEmployee(employeeData);
+                    Console.WriteLine("Employee added:" + employeeData.Name);
+                });
+                thread.Start();
+            });
+            Console.WriteLine(this.empList.Count);
         }
         public void AddMultipleEmployee(Employee emp)
         {

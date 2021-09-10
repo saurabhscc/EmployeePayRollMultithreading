@@ -36,7 +36,28 @@ namespace EmployeePayRollTest
             employeeOperation.AddMultipleEmployee(list);
             DateTime stopDateTime = DateTime.Now;
             Console.WriteLine("Duration without thread" + (startDateTime - stopDateTime));
-           
+        }
+        /// <summary>
+        /// UC2- Add Multiple Employee with threads
+        /// </summary>
+        [Test]
+        public void GivenEmployee_WhenAddedToListThread_ShouldMatchEmployeeEntries()
+        {
+            List<Employee> list = new List<Employee>();
+            list.Add(new Employee(1, "jatin", "M", "5656005656", "Pune", "Operations", 4000, 100.0, 100.0, 100.0, 3700.00, DateTime.Today));
+            list.Add(new Employee(2, "saiee", "M", "7799666677", "Mumbai", "Research", 4500, 150, 250.0, 150.0, 3950.0, DateTime.Today));
+            list.Add(new Employee(3, "Abhimaan", "M", "9988998877", "Mumbai", "Maintenance", 4100, 150.0, 150.0, 100.0, 3700.00, DateTime.Today));
+            list.Add(new Employee(4, "Nitesh", "M", "5253565656", "Pune", "Operations", 4000, 100.0, 100.0, 100.0, 3700.00, DateTime.Today));
+            list.Add(new Employee(5, "Rahul", "M", "6666666677", "Mumbai", "HR", 4500, 150, 250.0, 150.0, 3950.0, DateTime.Today));
+            list.Add(new Employee(6, "Gaurav", "M", "9988998866", "Mumbai", "Maintenance", 4100, 150.0, 150.0, 100.0, 3700.00, DateTime.Today));
+            list.Add(new Employee(7, "Abhishek", "M", "5656565655", "Pune", "HR", 4000, 100.0, 100.0, 100.0, 3700.00, DateTime.Today));
+            list.Add(new Employee(8, "shreetej", "M", "7777666676", "Thane", "Research", 4500, 150, 250.0, 150.0, 3950.0, DateTime.Today));
+            list.Add(new Employee(9, "samarth", "M", "7777666600", "Mumbai", "Maintenance", 4500, 150, 250.0, 150.0, 3950.0, DateTime.Today));
+            list.Add(new Employee(10, "Ajay", "M", "5656565655", "Pune", "Research", 4000, 100.0, 100.0, 100.0, 3700.00, DateTime.Today));
+            DateTime startDateTimeThread = DateTime.Now;
+            employeeOperation.AddMultipleEmployeeThread(list);
+            DateTime stopDateTimeThread = DateTime.Now;
+            Console.WriteLine("Duration with thread" + (startDateTimeThread - stopDateTimeThread));
         }
     }
 }
